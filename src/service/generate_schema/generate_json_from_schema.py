@@ -1,6 +1,3 @@
-import json
-
-from src.service.file_reader import file_reader
 from src.service.generate_schema.generate_data_for_user_creation import generate_password
 
 
@@ -24,7 +21,7 @@ def generate_user_data_json(schema):
     return data
 
 
-loaded_schema = file_reader(filename='../service/generate_schema/create_user_schema.json')
-body = generate_user_data_json(loaded_schema)
-json_string = json.dumps(body, indent=4)
-print(json_string)
+# loaded_schema = file_reader(filename='../service/generate_schema/create_user_schema.json')
+# body = generate_user_data_json(loaded_schema)
+# json_string = json.dumps(body, indent=4)
+# print(json_string)
