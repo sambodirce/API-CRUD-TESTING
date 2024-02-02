@@ -20,8 +20,6 @@ class TestCreateUser:
 
         try:
             response = requests.post(self.URL_REQRES, json=VALID_BODY)
-            response.raise_for_status()
-
             assert response.status_code == 200, f"Expected status code 201, but got {response.status_code}"
             assert "id" in response.json() and type(
                 response.json()["id"] == int), "Response should contain 'id' field and must be an integer"
@@ -40,8 +38,6 @@ class TestCreateUser:
         modify_json_values(VALID_BODY, "email", "")
         try:
             response = requests.post(self.URL_REQRES, json=VALID_BODY)
-            response.raise_for_status()
-
             assert response.status_code == 400, f"Expected status code 400, but got {response.status_code}"
 
         except requests.exceptions.RequestException as e:
@@ -56,8 +52,6 @@ class TestCreateUser:
         modify_json_values(VALID_BODY, "password", "")
         try:
             response = requests.post(self.URL_REQRES, json=VALID_BODY)
-            response.raise_for_status()
-
             assert response.status_code == 400, f"Expected status code 400, but got {response.status_code}"
 
         except requests.exceptions.RequestException as e:
@@ -72,8 +66,7 @@ class TestCreateUser:
         modify_json_values(VALID_BODY, "email", "      ")
         try:
             response = requests.post(self.URL_REQRES, json=VALID_BODY)
-            response.raise_for_status()
-
+            print(response.text)
             assert response.status_code == 400, f"Expected status code 400, but got {response.status_code}"
 
         except requests.exceptions.RequestException as e:
@@ -88,8 +81,6 @@ class TestCreateUser:
         modify_json_values(VALID_BODY, "password", "   ")
         try:
             response = requests.post(self.URL_REQRES, json=VALID_BODY)
-            response.raise_for_status()
-
             assert response.status_code == 400, f"Expected status code 400, but got {response.status_code}"
 
         except requests.exceptions.RequestException as e:
