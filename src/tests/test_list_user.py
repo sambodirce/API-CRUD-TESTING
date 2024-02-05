@@ -6,7 +6,7 @@ from precisely import assert_that, is_sequence
 from src.service.global_var import EMPTY_VAR, SEQUENCE_OF_SPACE_VAR, NON_EXISTENT_ID
 
 
-class TestListCampaign:
+class TestListUsers:
     def test_should_return_all_users_details_when_pass_a_valid_user_id(self):
         # Create and get user id
         USER_ID = create_user()

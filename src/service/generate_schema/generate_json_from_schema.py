@@ -1,4 +1,4 @@
-from src.service.generate_schema.generate_data_for_user_creation import generate_password
+from src.service.generate_schema.generate_data_for_user_creation import generate_password, generate_random_user
 
 
 def generate_user_data_json(schema):
@@ -8,6 +8,10 @@ def generate_user_data_json(schema):
         if isinstance(prop_schema, str):
             if prop_schema == "user-email":
                 data[prop] = "eve.holt@reqres.in"
+            if prop_schema == "user-name":
+                data[prop] = generate_random_user()[0]
+            if prop_schema == "user-job":
+                data[prop] = generate_random_user()[1]
             elif prop_schema == "user-password":
                 data[prop] = generate_password()
         elif isinstance(prop_schema, list):
